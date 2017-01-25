@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "DEBUG=loopback:apitestexample node .",
-    "posttest": "npm run lint && nsp check"
+    "test": "mocha",
+    "=posttest": "npm run lint && nsp check"
   },
   "dependencies": {
     "compression": "^1.0.3",
