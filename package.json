@@ -1,27 +1,27 @@
 {
   "name": "loopback-api-testing",
-  "version": "0.3.2",
-  "description": "Simplified automated API testing for Loopback",
+  "version": "0.1.0",
+  "description": "Simplified automated API testing for Loopback 3 with realm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jubbens/loopback-api-testing.git"
+    "url": "git+https://github.com/Monstrik/loopback-api-testing.git"
   },
   "keywords": [
-    "loopbackjs"
+    "loopback"
   ],
   "dependencies": {
-    "supertest": "^1.0.1",
-    "mocha": "^2.2.5",
-    "async": "latest"
+    "async": "^2.1.4",
+    "mocha": "^3.2.0",
+    "supertest": "^2.0.1"
   },
-  "author": "Jordan Ubbens",
+  "author": "Alexander Yakovis",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jubbens/loopback-api-testing/issues"
   },
-  "homepage": "https://github.com/jubbens/loopback-api-testing#readme"
+  "homepage": "https://github.com/Monstrik/loopback-api-testing"
 }

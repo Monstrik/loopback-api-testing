@@ -1,0 +1,113 @@
+[
+  {
+    "method": "GET",
+    "path": "status",
+    "expect": 200
+  },
+  {
+    "method": "POST",
+    "path": "api/customers/login",
+    "expect": 400
+  },
+  {
+    "method": "POST",
+    "path": "api/customers/login",
+    "withData": {
+      "realm": "VROOM"
+    },
+    "expect": 400
+  },
+  {
+    "method": "POST",
+    "path": "api/customers/login",
+    "withData": {
+      "email": "fake",
+      "password": "fake"
+    },
+    "expect": 400
+  },
+  {
+    "method": "POST",
+    "path": "api/customers/login",
+    "withData": {
+      "realm": "VROOM",
+      "email": "fake",
+      "password": "fake"
+    },
+    "expect": 401
+  },
+  {
+    "method": "POST",
+    "path": "api/customers/",
+    "withData": {
+      "FirstName": "TestUser",
+      "LastName": "TestUser",
+      "EmailAddress": "TestUser@TestUser.com",
+      "PhoneNumber": "917",
+      "password": "TestUser@TestUser.com",
+      "EmailMarketing": false,
+      "realm": "SUYC",
+      "email": "TestUser@TestUser.com"
+    },
+    "expect": 200
+  },
+  {
+    "method": "POST",
+    "path": "api/customers/",
+    "withData": {
+      "FirstName": "TestUser",
+      "LastName": "TestUser",
+      "EmailAddress": "TestUser@TestUser.com",
+      "PhoneNumber": "917",
+      "password": "TestUser@TestUser.com",
+      "EmailMarketing": false,
+      "realm": "SUYC",
+      "email": "TestUser@TestUser.com"
+    },
+    "expect": 422
+  },
+  {
+    "method": "POST",
+    "path": "api/customers/login",
+    "withData": {
+      "realm": "SUYC",
+      "email": "TestUser@TestUser.com",
+      "password": "TestUser@TestUser.com"
+    },
+    "expect": 200,
+    "login": true
+  },
+  {
+    "method": "GET",
+    "path": "api/customers/validToken",
+    "password": "TestUser@TestUser.com",
+    "realm": "SUYC",
+    "email": "TestUser@TestUser.com",
+    "expect": 200
+  },
+  {
+    "method": "PATCH",
+    "path": "api/customers/",
+    "password": "TestUser@TestUser.com",
+    "realm": "SUYC",
+    "email": "TestUser@TestUser.com",
+    "withPathValues": [
+      "{currentUserId}"
+    ],
+    "withData": {
+      "FirstName": "NewName2"
+    },
+    "expect": 200
+  },
+  {
+    "method": "DELETE",
+    "path": "api/customers/",
+    "password": "TestUser@TestUser.com",
+    "realm": "SUYC",
+    "email": "TestUser@TestUser.com",
+    "withPathValues": [
+      "{currentUserId}"
+    ],
+    "expect": 200
+  }
+]
