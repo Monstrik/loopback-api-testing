@@ -9,18 +9,17 @@ var async = require('async');
 
 module.exports = {
 
-    run: function (conf, app, url, callback) {
+    run: function (data, app, url, callback) {
 
-        var loginUrl = 'api/customers/login';
-        var logOutUrl = 'api/customers/logout';
+        if (typeof data !== 'object') {
+            return callback('Failed to load test configuration from file');
+        }
 
         var server;
         var agent = supertest.agent(url);
         var baseURL = '/';
-
-        if (typeof conf !== 'object') {
-            return callback('Failed to load test configuration from file');
-        }
+        var loginUrl = data.config.loginUrl;
+        var logOutUrl = data.config.logOutUrl;
 
         if (app) {
             before(function (done) {
@@ -33,7 +32,7 @@ module.exports = {
         }
 
         describe('Loopback API', function () {
-            async.each(conf, function (c, asyncCallback) {
+            async.each(data.tests, function (c, asyncCallback) {
 
                 if (!c.hasOwnProperty('method')) {
                     callback('Test has no method specified');

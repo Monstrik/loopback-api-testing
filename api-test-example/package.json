@@ -21,6 +21,7 @@
     "debug": "^2.6.0",
     "eslint": "^2.13.1",
     "eslint-config-loopback": "^4.0.0",
+    "loopback-api-testing": "git+https://github.com/Monstrik/loopback-api-testing.git",
     "nsp": "^2.1.0"
   },
   "repository": {

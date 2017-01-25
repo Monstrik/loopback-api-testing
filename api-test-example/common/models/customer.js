@@ -160,7 +160,7 @@ module.exports = function (Customer) {
     debug('> Customer.beforeRemote create triggered');
     //send verification email after registration here
     if (!context.req.body.realm) {
-      error('realm required');
+      debug('realm required');
       next(new Error('realm required'));
     }
     else {
