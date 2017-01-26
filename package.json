@@ -1,7 +1,7 @@
 {
   "name": "loopback-api-testing",
   "version": "0.1.0",
-  "description": "Simplified automated API testing for Loopback 3 with realm",
+  "description": "Loopback 3 API Testing with 'realm' users",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\""
@@ -20,8 +20,5 @@
   },
   "author": "Alexander Yakovis",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jubbens/loopback-api-testing/issues"
-  },
   "homepage": "https://github.com/Monstrik/loopback-api-testing"
 }
