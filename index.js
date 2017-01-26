@@ -39,7 +39,7 @@ module.exports = {
                     return asyncCallback();
                 }
 
-                if (!c.hasOwnProperty('model')) {
+                if (!c.hasOwnProperty('path')) {
                     callback('Test has no route specified');
                     return asyncCallback();
                 }
@@ -54,7 +54,7 @@ module.exports = {
                 var isWithAuthentication = (c.hasOwnProperty('email') && c.hasOwnProperty('password') && c.hasOwnProperty('realm'));
                 var authenticationDescription = (isWithAuthentication) ? 'authenticated' : 'unauthenticated';
 
-                var description = 'should respond ' + c.expect + ' on ' + authenticationDescription + ' ' + c.method + ' requests to /' + c.model;
+                var description = 'should respond ' + c.expect + ' on ' + authenticationDescription + ' ' + c.method + ' requests to /' + c.path;
                 var parsedMethod;
                 var loginBlock;
 
@@ -105,19 +105,19 @@ module.exports = {
                         }
 
                         if (hasPathValues) {
-                            c.model = c.model + '/' + currentUserId
+                            c.path = c.path + '/' + currentUserId
                         }
 
                         if (c.method.toUpperCase() === 'GET') {
-                            parsedMethod = agent.get(baseURL + c.model);
+                            parsedMethod = agent.get(baseURL + c.path);
                         } else if (c.method.toUpperCase() === 'POST') {
-                            parsedMethod = agent.post(baseURL + c.model);
+                            parsedMethod = agent.post(baseURL + c.path);
                         } else if (c.method.toUpperCase() === 'PUT') {
-                            parsedMethod = agent.put(baseURL + c.model);
+                            parsedMethod = agent.put(baseURL + c.path);
                         } else if (c.method.toUpperCase() === 'DELETE') {
-                            parsedMethod = agent.delete(baseURL + c.model);
+                            parsedMethod = agent.delete(baseURL + c.path);
                         } else if (c.method.toUpperCase() === 'PATCH') {
-                            parsedMethod = agent.patch(baseURL + c.model);
+                            parsedMethod = agent.patch(baseURL + c.path);
                         } else {
                             callback('Test has an unrecognized method type');
                             return asyncCallback();
