@@ -6,7 +6,7 @@
   "tests": [
     {
       "method": "GET",
-      "path": "status",
+      "path": "",
       "expect": 200
     },
     {
