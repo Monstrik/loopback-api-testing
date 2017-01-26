@@ -1,4 +1,4 @@
-# Loopback API Testing #
+# Loopback 3 API Testing with 'realm' users #
 
 This package is a simplified replacement for [loopback-testing](https://github.com/strongloop/loopback-testing), which is now considered deprecated.
 It generates [Mocha](https://mochajs.org/) tests for Loopback API routes and examines their response codes.
@@ -26,28 +26,10 @@ npm test
 ## Running the tests (for example): ##
 
 ```bash
+
 mocha --reporter spec test
-```
-
-The test data file `./api-test-example/test/apiTestData.json`
-
-
-Automated API testing for Loopback 3 with realm
-
-```js
-var loopbackApiTesting = require('loopback-api-testing');
-var testsData = require('./apiTestData.json');
-var server = require('../server/server.js');
-var url = 'http://localhost:3000';
-
-loopbackApiTesting.run(testsData, server, url, function(err) {
-  if (err) {
-    console.log(err);
-  }
-});
 
 ```
-
 
 ## Making Authenticated Requests ##
 
@@ -84,9 +66,9 @@ You can send json data with a request.
 ```
 ## Making Requests with query param ##
 
-You can add param like model id in query with a request.
+You can add userId in query with a request.
 
-api/customers/{currentUserId}
+api/customers/{currentUserId}?auth...
 
 ```js
 [
