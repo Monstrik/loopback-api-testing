@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint .",
     "start": "DEBUG=loopback:apitestexample node .",
-    "test": "mocha",
+    "test": "mocha --timeout 10000 ",
     "=posttest": "npm run lint && nsp check"
   },
   "dependencies": {

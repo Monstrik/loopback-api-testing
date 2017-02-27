@@ -11,8 +11,6 @@ module.exports = {
 
     run: function (data, app, url, callback) {
 
-
-        console.log('tezt=');
         if (typeof data !== 'object') {
             return callback('Failed to load test configuration from file');
         }
@@ -23,7 +21,7 @@ module.exports = {
         var loginUrl = data.config.loginUrl;
         var logOutUrl = data.config.logOutUrl;
         var requestTimeout = data.config.requestTimeout;
-        console.log('requestTimeout=',requestTimeout);
+
         if (app) {
             before(function (done) {
                 server = app.listen(done);
@@ -109,10 +107,6 @@ module.exports = {
                             return asyncCallback();
                         }
 
-                        if (requestTimeout){
-                            agent.timeout(requestTimeout)
-                            console.log('requestTimeout=',requestTimeout);
-                        }
 
                         if (hasPathValues) {
                             //TODO: check path values
@@ -146,6 +140,9 @@ module.exports = {
                                 .set('Content-Type', 'application/json');
                         }
 
+                        if (requestTimeout) {
+                            parsedMethod = parsedMethod.timeout(requestTimeout);
+                        }
 
 
                         parsedMethod

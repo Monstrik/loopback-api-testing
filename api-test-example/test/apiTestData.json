@@ -1,9 +1,15 @@
 {
   "config": {
+    "requestTimeout": 7000,
     "loginUrl": "api/customers/login",
     "logOutUrl": "api/customers/logout"
   },
   "tests": [
+    {
+      "method": "GET",
+      "path": "api/customers/longRunning?delay=5000",
+      "expect": 200
+    },
     {
       "method": "GET",
       "path": "",
