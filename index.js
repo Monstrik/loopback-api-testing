@@ -11,6 +11,8 @@ module.exports = {
 
     run: function (data, app, url, callback) {
 
+
+        console.log('tezt=');
         if (typeof data !== 'object') {
             return callback('Failed to load test configuration from file');
         }
@@ -20,7 +22,8 @@ module.exports = {
         var baseURL = '/';
         var loginUrl = data.config.loginUrl;
         var logOutUrl = data.config.logOutUrl;
-
+        var requestTimeout = data.config.requestTimeout;
+        console.log('requestTimeout=',requestTimeout);
         if (app) {
             before(function (done) {
                 server = app.listen(done);
@@ -63,6 +66,7 @@ module.exports = {
                     loginBlock = function (loginCallback) {
                         agent
                             .post(baseURL + loginUrl)
+                            .timeout(requestTimeout)
                             .send({email: c.email, password: c.password, realm: c.realm, ttl: '1209600000'})
                             .set('Accept', 'application/json')
                             .set('Content-Type', 'application/json')
@@ -86,6 +90,7 @@ module.exports = {
                 var logOut = function (token, logOutCallback) {
                     agent
                         .post(baseURL + logOutUrl + '?access_token=' + token)
+                        .timeout(requestTimeout)
                         .set('Accept', 'application/json')
                         .set('Content-Type', 'application/json')
                         .expect(200)
@@ -104,7 +109,13 @@ module.exports = {
                             return asyncCallback();
                         }
 
+                        if (requestTimeout){
+                            agent.timeout(requestTimeout)
+                            console.log('requestTimeout=',requestTimeout);
+                        }
+
                         if (hasPathValues) {
+                            //TODO: check path values
                             c.path = c.path + '/' + currentUserId
                         }
 
@@ -134,6 +145,8 @@ module.exports = {
                             parsedMethod = parsedMethod.send(c.withData)
                                 .set('Content-Type', 'application/json');
                         }
+
+
 
                         parsedMethod
                             .expect(c.expect)
