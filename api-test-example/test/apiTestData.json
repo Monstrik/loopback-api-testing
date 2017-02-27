@@ -7,8 +7,8 @@
   "tests": [
     {
       "method": "GET",
-      "description": "test long running API",
-      "path": "api/customers/longRunning?delay=5000",
+      "description": "Test long running API",
+      "path": "api/customers/longRunning?delay=3000",
       "expect": 200
     },
     {
