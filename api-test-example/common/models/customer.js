@@ -250,4 +250,20 @@ module.exports = function (Customer) {
     //     return debug('password reset email sent:', result);
     //   });
   });
+
+  Customer.longRunning = function (delay, cb) {
+    setTimeout(function () {
+      cb(null, delay);
+    }, delay)
+  };
+
+  Customer.remoteMethod(
+    'longRunning',
+    {
+      http: {verb: 'get'},
+      accepts: {arg: 'delay', type: 'number', required: true, default: 0, description: 'in ms'},
+      accepts: {arg: 'delay', type: 'number', required: true, default: 0, description: 'in ms'},
+      returns: {arg: 'finishedIn', type: 'number'}
+    }
+  );
 };
